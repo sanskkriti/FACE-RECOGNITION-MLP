@@ -1,80 +1,71 @@
-# 🤖 MLP Face Recognition System
+# 🧠 Face Recognition using PCA + LDA + MLP
 
-A face recognition system using **Multi-Layer Perceptron (MLP)** neural networks, integrated with **PCA** and **LDA** for dimensionality reduction. The model is trained to identify Bollywood celebrities with competitive accuracy and visualizes important training insights.
-
----
-
-## 📌 Project Overview
-
-This project demonstrates a full pipeline of a **face recognition system**:
-- Face detection using OpenCV
-- Dimensionality reduction using **Principal Component Analysis (PCA)** and **Linear Discriminant Analysis (LDA)**
-- Classification using an **MLP Neural Network**
-- Visualization of eigenfaces and prediction confidence
+A machine learning pipeline for facial recognition using a custom dataset of Indian celebrities. The model combines dimensionality reduction (PCA + LDA) with a Multi-Layer Perceptron (MLP) classifier.
 
 ---
 
-## 🚀 Key Features
+## 📂 Dataset
 
-✅ Face recognition via MLP classifier  
-✅ Dimensionality reduction with PCA + LDA  
-✅ Works on real celebrity images  
-✅ Accuracy evaluation + loss visualization  
-✅ Probability scores for predictions  
-✅ Eigenface visualizations  
-
----
-
-## 🛠️ Tech Stack
-
-- **Python**  
-- **Jupyter Notebook**
-- **Libraries:**
-  - `scikit-learn` (MLPClassifier, PCA, LDA)
-  - `OpenCV` (cv2)
-  - `NumPy`
-  - `Matplotlib`
+- The dataset is in the `faces/` folder (zipped as `Faces.zip`).
+- Structure:
+  ```
+  faces/
+  ├── Aamir/
+  ├── Alia/
+  ├── Amitabh/
+  ├── Deepika/
+  └── ...
+  ```
+- Each subfolder contains grayscale face images of that person.
 
 ---
 
-## 🧠 Model Architecture
+## 📊 Pipeline Overview
 
-- **Input:** 150 PCA components  
-- **MLP Structure:**
-  - Hidden Layers: (10, 10)
-  - Output: Number of classes (based on celebrities)
-- **Training:**
-  - Max Iterations: 1000
-  - Early Stopping when loss change < 0.0001
-
----
-
-## 📂 Dataset Structure
-
-faces/
-├── Aamir/
-├── Ajay/
-├── Akshay/
-├── Alia/
-├── Amitabh/
-├── Deepika/
-├── Disha/
-├── Farhan/
-└── Ileana/
-
-Each folder contains face images of the respective celebrity.
+| Step | Method |
+|------|--------|
+| 📥 Data Preprocessing | Grayscale conversion, resizing (300x300) |
+| 📉 Dimensionality Reduction | PCA → LDA |
+| 🤖 Classifier | MLP (3 layers: 10-10-9) |
+| 📈 Evaluation | Accuracy + Sample Predictions |
 
 ---
 
-## 📈 Results
+## 🧪 Results
 
-- **Accuracy:** ~77.88%  
-- **Loss:** Converged smoothly  
-- **Confidence Scores:** Displayed alongside predictions  
-- **Visuals:** Eigenfaces and training loss curves
+- Achieved **~54% accuracy** on unseen test data.
+- Sample visualization of eigenfaces and predictions using `matplotlib`.
 
+---
 
-Author
-Sanskriti Jha
+## 🛠️ How to Run
 
+1. Install dependencies:
+    ```bash
+    pip install opencv-python scikit-learn matplotlib
+    ```
 
+2. Unzip the dataset:
+    ```bash
+    unzip Faces.zip
+    ```
+
+3. Run the Python file:
+    ```bash
+    python face_recognition.py
+    ```
+---
+
+## 🤝 Credits
+
+- Created by [Sanskriti Jha](https://github.com/sanskkriti)
+- Dataset: Curated manually from celebrity images
+
+---
+
+## 📌 Note
+
+- Accuracy depends heavily on image quality, lighting, and dataset size.
+- You can extend the model with CNNs or use transfer learning (e.g., with VGGFace) for better performance.
+
+---
